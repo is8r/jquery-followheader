@@ -52,7 +52,7 @@
         if(!$(element).hasClass('is-open')) {
           $(element).addClass('is-open');
         }
-      } else if(y < 0){
+      } else if(y <= 0){
         $(element).removeClass('is-open');
       }
     },
