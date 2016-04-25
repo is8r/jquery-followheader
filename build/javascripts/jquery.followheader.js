@@ -47,32 +47,23 @@
 
     plugin.scrollUp = function(y) {
       // console.log('scrollUp, ', y+', ', plugin.settings.lastY);
+      $(element).removeClass('is-close');
       if (y > plugin.settings.minY) {
-        $(element).css({top: '0px'});
-        $(element).addClass('is-transition');
-      } else if (y == 0) {
-        $(element).css({top: '0px'});
-        $(element).removeClass('is-fixed');
-      } else if ($(element).css('top') != '0px') {
-        $(element).css({top: '0px'});
-        $(element).removeClass('is-fixed');
+        if(!$(element).hasClass('is-open')) {
+          $(element).addClass('is-open');
+        }
+      } else if(y == 0){
+        $(element).removeClass('is-open');
       }
     },
 
     plugin.scrollDown = function(y) {
       //console.log('scrollDown, ', y+', ', plugin.settings.lastY);
-      if (y >= plugin.settings.minY) {
-        if($(element).hasClass('is-fixed')) {
-          $(element).addClass('is-fixed');
-          $(element).css({top: -plugin.settings.minY+'px'});
-          $(element).addClass('is-transition');
-        } else {
-          $(element).addClass('is-fixed');
-          $(element).css({top: -plugin.settings.minY+'px'});
-          $(element).removeClass('is-transition');
+      if (y > plugin.settings.minY) {
+        if($(element).hasClass('is-open')) {
+          $(element).removeClass('is-open');
+          $(element).addClass('is-close');
         }
-      } else {
-        $(element).removeClass('is-fixed');
       }
     },
 

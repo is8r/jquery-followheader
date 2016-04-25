@@ -1,10 +1,28 @@
 .followheader
+  $h: 50px
+  @keyframes enter
+    from
+      top: -$h
+    to
+      top: 0px
+
+  @keyframes leave
+    from
+      top: 0px
+    to
+      top: -$h
+
   position: absolute
   top: 0
   left: 0
   width: 100%
   z-index: 999
-  &.is-fixed
+  height: $h
+  &.is-open
     position: fixed
-  &.is-transition
-    transition: top 0.3s ease-out
+    animation: enter 0.3s ease-out
+    top: 0
+  &.is-close
+    position: fixed
+    animation: leave 0.3s ease-out
+    top: -$h

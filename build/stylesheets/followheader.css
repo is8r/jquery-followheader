@@ -3,8 +3,23 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999; }
-  .followheader.is-fixed {
-    position: fixed; }
-  .followheader.is-transition {
-    transition: top 0.3s ease-out; }
+  z-index: 999;
+  height: 50px; }
+@keyframes enter {
+  from {
+    top: -50px; }
+  to {
+    top: 0px; } }
+@keyframes leave {
+  from {
+    top: 0px; }
+  to {
+    top: -50px; } }
+  .followheader.is-open {
+    position: fixed;
+    animation: enter 0.3s ease-out;
+    top: 0; }
+  .followheader.is-close {
+    position: fixed;
+    animation: leave 0.3s ease-out;
+    top: -50px; }
