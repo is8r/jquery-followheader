@@ -1,26 +1,9 @@
-$(document).on('ready page:load', function() {
+$(document).on('ready', function() {
 
-  var $bar = $('.js-follow');
-  var minY = $bar.height();
-  var nowY = 0;
+  var $header = $('.js-follow');
+  var minY = $header.height();
   var lastY = 0;
-  var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
-  //http://stackoverflow.com/questions/2863547
-  if (iOS) {
-    $(window).on('touchstart', function () {
-      lastY = $(window).scrollTop();
-    });
-    $(window).on('touchend', function () {
-      var y = $(window).scrollTop();
-      if (y < lastY || y - $bar.outerHeight() < minY) {
-        scrollUp(y);
-      } else if (y > lastY) {
-        scrollDown(y);
-      }
-    });
-  } else {
-    $(window).on('scroll', _.throttle(updateScroll, 100));
-  }
+  $(window).on('scroll', _.throttle(updateScroll, 100));
   function updateScroll() {
     var y = $(window).scrollTop();
     if (y < lastY) {
@@ -35,26 +18,26 @@ $(document).on('ready page:load', function() {
     $('.js-output').append('scrollUp');
 
     if (y >= minY) {
-      $bar.css({top: '0px'});
-      $bar.addClass('is-transition');
+      $header.css({top: '0px'});
+      $header.addClass('is-transition');
     } else if (y < 0) {
-      $bar.removeClass('is-fixed');
+      $header.removeClass('is-fixed');
     }
   };
   function scrollDown(y) {
     log('scrollDown, ', y+', ', lastY);
     if (y >= minY) {
-      if($bar.hasClass('is-fixed')) {
-        $bar.addClass('is-fixed');
-        $bar.css({top: -minY+'px'});
-        $bar.addClass('is-transition');
+      if($header.hasClass('is-fixed')) {
+        $header.addClass('is-fixed');
+        $header.css({top: -minY+'px'});
+        $header.addClass('is-transition');
       } else {
-        $bar.addClass('is-fixed');
-        $bar.css({top: -minY+'px'});
-        $bar.removeClass('is-transition');
+        $header.addClass('is-fixed');
+        $header.css({top: -minY+'px'});
+        $header.removeClass('is-transition');
       }
     } else {
-      $bar.removeClass('is-fixed');
+      $header.removeClass('is-fixed');
     }
   };
   function log() {
