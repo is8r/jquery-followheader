@@ -46,17 +46,21 @@
     },
 
     plugin.scrollUp = function(y) {
-      plugin.log('scrollUp, ', y+', ', plugin.settings.lastY);
-      if (y >= plugin.settings.minY) {
+      // console.log('scrollUp, ', y+', ', plugin.settings.lastY);
+      if (y > plugin.settings.minY) {
         $(element).css({top: '0px'});
         $(element).addClass('is-transition');
-      } else if (y < 0) {
+      } else if (y == 0) {
+        $(element).css({top: '0px'});
+        $(element).removeClass('is-fixed');
+      } else if ($(element).css('top') != '0px') {
+        $(element).css({top: '0px'});
         $(element).removeClass('is-fixed');
       }
     },
 
     plugin.scrollDown = function(y) {
-      plugin.log('scrollDown, ', y+', ', plugin.settings.lastY);
+      //console.log('scrollDown, ', y+', ', plugin.settings.lastY);
       if (y >= plugin.settings.minY) {
         if($(element).hasClass('is-fixed')) {
           $(element).addClass('is-fixed');
