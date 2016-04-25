@@ -1,0 +1,48 @@
+@charset "utf-8"
+
+body
+  margin: 0
+  padding: 0
+
+.topbar
+  $h: 50px
+  height: $h
+  background-color: #f2f2f2
+  text-align: left
+  h1
+    margin: 0
+    padding: 0 0 0 30px
+    font-size: 1.0rem
+    font-weight: normal
+    line-height: $h
+
+.content
+  padding: 60px 30px 10px 30px
+  color: #aaa
+
+.log
+  position: fixed
+  bottom: 10px
+  left: 0
+  width: 100%
+  background-color: rgba(#fff, 0.8)
+  height: 40px
+  overflow: hidden
+  padding: 20px
+  box-sizing: border-box
+  color: #555
+
+.topbar-follow
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 999
+  &.is-fixed
+    position: fixed
+  &.is-transition
+    transition: top 0.3s ease-out
+
+
+
+
