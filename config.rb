@@ -43,4 +43,14 @@ configure :build do
   # activate :minify_javascript
 
   activate :relative_assets
+
+  # for GitHub Pages
+  activate :asset_host, :host => "/jquery-followheader"
+end
+
+# Deploy to GitHub Pages
+activate :deploy do |deploy|
+  deploy.deploy_method = :git
+  deploy.build_before = true
+  deploy.branch = 'gh-pages'
 end
